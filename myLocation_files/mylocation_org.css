@@ -1,0 +1,197 @@
+/* reset */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small,
+strike, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td {margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;
+font-size:100%;font-family:inherit;vertical-align:baseline;-moz-box-sizing: border-box;}
+:focus {outline:0;outline-color:transparent;}
+ol, ul {list-style:none;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;}
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+blockquote, q {quotes:"" "";}
+.clear {clear:both;height:0;overflow:hidden;}
+
+
+/* main */
+
+html, body {
+    color: #695A58;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    height: 100%;
+}
+
+.ha {
+    margin: 2em auto;
+}
+.ha, .ha div {
+    width: 728px;
+    height: 90px;
+}
+@media screen and (max-width: 758px) {
+    .ha, .ha div {
+        width: 100%;
+    }
+}
+
+.ui-widget {
+    font-family: inherit !important;
+}
+#wrapper {
+	max-width: 900px;
+	margin: 0 auto 1em auto;
+	width: 95%;
+	padding: 0 1%;
+}
+.panel-wrapper {
+	height: 300px;
+}
+.info {
+	width: 48.5%;
+	float: left;
+	min-width: 320px;
+	margin-right: 2%;
+}
+.map {
+	width: 48.5%;
+	float: left;
+	min-width: 320px;
+	height: 300px;
+	border: 1px solid #FFCFDA;
+	background: url(/images/mylocation_org/mapbg.png) no-repeat center center;
+}
+.pic {
+	width: 48.5%;
+	float: left;
+	min-width: 320px;
+	height: 300px;
+	border: 1px solid #FFCFDA;
+	background: url(/images/mylocation_org/pic.jpg) no-repeat left top;
+}
+.info p {
+	margin: 8px 0;
+}
+#geo-test, #vpn-link {
+	margin: 15px 0;
+	font-size: 0.95em;
+}
+
+#header-wrapper {
+    background: url(/images/mylocation_org/logo.svg) no-repeat 0 0;
+    background-size: auto 9em;
+    width: 34em;
+    height: 9em;
+    margin: 1em auto 0 auto;
+}
+#header-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3em;
+    letter-spacing: 0.2em;
+    color: #db4865; 
+    margin-left: 6em;
+    padding-top: 1.2em;
+}
+#header-text h1 {
+    font-family: 'Fredoka One', Verdana;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    color: #93c3cd;
+    text-shadow: 3px 3px 0px #db4865;
+}
+#header-text a {
+    text-decoration: none; 
+}
+
+#desc {
+	margin: 20px 0 15px 0;
+	font-size: 1.4em;
+}
+#desc p {
+	margin: 5px 0;
+}
+#advice {
+	margin: 25px auto 15px auto;
+	font-size: 1.2em;
+	text-align: center;
+}
+#topads {
+    margin: 20px auto;
+    max-width: 728px;
+    overflow: hidden;
+}
+#bottomads {
+    margin: 25px auto 15px auto;
+    max-width: 728px;
+    overflow: hidden;
+}
+#accordion {
+	visibility: hidden;
+}
+.ui-accordion .ui-accordion-content {
+    padding: 1em 1.5em !important;
+}
+.ui-accordion .ui-accordion-icons {
+    padding-left: 1.5em !important;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    left: 0.3em !important;
+}
+
+.info table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+    font-size: 0.95em;
+}
+.info table td {
+    border-top: 1px solid #FFCFDA;
+    color: #666666;
+    padding: 10px 1px;
+}
+.info table td:first-child {
+    border-right: 10px solid transparent;
+    color: #DB4865;
+    width: 26%;
+}
+.info table tr:hover td {
+    background: none repeat scroll 0 0 #F8EDEF;
+}
+.info table tr:first-child td {
+	border-top: none;
+}
+
+#footer {
+    text-align: center;
+    margin: 30px 0 40px 0;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 750px) {
+    #header-wrapper {
+        font-size: 10px;
+    }
+    #desc {
+        display: none;
+    }
+    .panel-wrapper {
+        height: 600px;
+    }
+    .info, .map, .pic {
+        width: 100%;
+    }
+    .map, .pic {
+        margin-top: 10px;
+    }
+    .ui-accordion .ui-accordion-content {
+        padding: 1em 1em !important;
+    }
+    .ui-accordion .ui-accordion-icons {
+        padding-left: 1em !important;
+    }
+    .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+        display: none;
+    }
+}

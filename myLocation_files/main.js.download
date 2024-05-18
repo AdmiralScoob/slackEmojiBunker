@@ -1,0 +1,91 @@
+/// Initializations
+
+var sessionID = randomString(), attempts = 10, allowProcessing = 0, maps = new Array(), geoTimer, ws = 1;
+
+$(document).ready(function() {
+    initAccordion();
+    $(window).resize(function() {
+        setTimeout(function() { $("#accordion").accordion("refresh"); }, 500);
+    });
+    $("#vpn-link").button().click(function() {
+        window.location = $(this).attr("data-href");
+    });
+    initMap();
+});
+
+function initAccordion() {
+    $("#accordion").accordion({
+        "animate" : false,
+        "heightStyle" : "content",
+        "create" : function(event, ui) {
+            $("#accordion").css("visibility", "visible");
+        },
+        "activate" : function(event, ui) {
+            var mapID = $(".map", ui.newPanel).attr("id");
+            if (maps[mapID]) {
+                maps[mapID].invalidateSize();
+            } else {
+                if (mapID == "map-geo" && $("#geo-test").attr("role") != "button") {
+                    initGeoButton();
+                } else {
+                    initMapByID($(".map", ui.newPanel).attr("id"));
+                }
+            }
+        }
+    });
+}
+
+function initMap() {
+    initMapByID("map-0");
+}
+
+function initMapByID(id) {
+    var t = $("#" + id).attr("title");
+    if (t) {
+        var ll = t.split(", ");
+        if (ll[0] && ll[1]) {
+            $("#" + id).removeAttr("title").css("background", "none");
+            
+            maps[id] = L.map(id).setView([ll[0], ll[1]], 12);
+            L.tileLayer('https://geo.mylocation.org/hot/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(maps[id]);
+
+            marker = L.marker([ll[0], ll[1]]).addTo(maps[id]);
+
+        }
+    }
+}
+
+function initGeoButton() {
+    $("#geo-test").button();
+    $("#geo-test").click(function() {
+        $(this).blur();
+        if ($("#geo-latitude").html() == "waiting...") return;
+        if (geoPosition.init()) {
+            $("#geo-latitude, #geo-longitude").html("waiting...");
+            geoPosition.getCurrentPosition(geoSuccess, geoError, { "enableHighAccuracy" : true });
+            $("#geo-test").button("disable");
+            geoTimer = setTimeout(geoError, 15000);
+        } else {
+            $("#geo-latitude, #geo-longitude").html("not supported");
+        }
+    });
+}
+
+/// Functions
+
+function geoSuccess(p) {
+    clearTimeout(geoTimer);
+    $("#geo-latitude").html(p.coords.latitude);
+    $("#geo-longitude").html(p.coords.longitude);
+    $("#geo-test").button("enable");
+    $("#map-geo").attr("title", p.coords.latitude + ", " + p.coords.longitude);
+    initMapByID("map-geo");
+}
+
+function geoError() {
+    clearTimeout(geoTimer);
+    $("#geo-latitude, #geo-longitude").html("failed");
+    $("#geo-test").button("enable");
+}

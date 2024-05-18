@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://mylocation.org/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>My Location</title>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com/" crossorigin="">
+    <link rel="preconnect" href="https://stats.monohost.com/" crossorigin="">
+    <meta name="msvalidate.01" content="D5D91A439DD2754A4CD969318549EF6E">
+    
+    <meta name="description" content="Your location as seen from the Internet using your IP address and the new HTML5 geolocation feature.">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://mylocation.org/images/mylocation_org/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://mylocation.org/images/mylocation_org/favicon.png" type="image/x-icon">
+    <meta property="og:site_name" content="My Location">
+    <meta property="og:title" content="My Location">
+    <meta property="og:description" content="Your location as seen from the Internet using your IP address and the new HTML5 geolocation feature.">
+    <meta property="og:image" content="https://mylocation.org/images/mylocation_org/icon.png">
+    <link href="./myLocation_files/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css">
+    <link href="./myLocation_files/mylocation_org.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" defer="" src="./myLocation_files/piwik.js.download"></script><script type="text/javascript" src="./myLocation_files/jquery-1.8.2.min.js.download"></script>
+    <script type="text/javascript" src="./myLocation_files/jquery-ui-1.10.3.custom.min.js.download"></script>
+    <script type="text/javascript" src="./myLocation_files/geoPosition.min.js.download"></script>
+    <script type="text/javascript" src="./myLocation_files/common.min.js.download"></script><style type="text/css">.bitcoinate{background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f7931a), color-stop(1, #c16c07));background-image:-webkit-linear-gradient(top, #f7931a 0%, #c16c07 100%);background-image:-moz-linear-gradient(top, #f7931a 0%, #c16c07 100%);background-image:-o-linear-gradient(top, #f7931a 0%, #c16c07 100%);background-image:-ms-linear-gradient(top, #f7931a 0%, #c16c07 100%);background-image:linear-gradient(top, #f7931a 0%, #c16c07 100%);font:900 12px/18px Arial,sans-serif;color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,0.5);border:1px solid #c16c07;margin:0;cursor:pointer;}.bitcoinate:hover,.bitcoinate:focus{background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f89e34), color-stop(1, #e88208));background-image:-webkit-linear-gradient(top, #f89e34 0%, #e88208 100%);background-image:-moz-linear-gradient(top, #f89e34 0%, #e88208 100%);background-image:-o-linear-gradient(top, #f89e34 0%, #e88208 100%);background-image:-ms-linear-gradient(top, #f89e34 0%, #e88208 100%);background-image:linear-gradient(top, #f89e34 0%, #e88208 100%)}.bitcoinate span{background-repeat:no-repeat;display:inline-block;vertical-align:middle;position:relative;margin:0 4px 0 0}.bitcoinate[data-size="20"]{padding:0 3px;-webkit-border-radius:2px;border-radius:2px;}.bitcoinate[data-size="20"]:active{-webkit-box-shadow:inset 0 0 4px rgba(0,0,0,0.5);box-shadow:inset 0 0 4px rgba(0,0,0,0.5)}.bitcoinate[data-size="20"] span{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAQAAAC8qkUgAAAAAnNCSVQICFXsRgQAAAAJcEhZcwAACM8AAAjPAXtFbpsAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAA7UlEQVQY002Pv0sCAQBGP3AOW24paSkayy36Q5ra+w9sqyFwCxtMCIIgKMHEwQqaAoPAiFxaRBDi7AiE47zq6n543WvoSN/2PfiGJ0na3dw/2c6VrwuLmvBwYA8v8nC1nopSo9R4fP7wqrdQri5syJCUhEwRx2c1ZST1j+B9hMGSXYdoXMlLahXAdTSrueIegD2fSj9o3t91vC9oX2omlfE4fAq7PyF8+8eHk7sksiMTXk0pWyuC68hQTmu9PniOTuumBUFw02513oYAbkXBIP6MI5IkgsCKz9ki85/ZXJnKlCRrx3/pLkNv9W//AvkYphZShvCzAAAAAElFTkSuQmCC");width:10px;height:14px;bottom:2px}.bitcoinate[data-size="30"]{padding:0 8px;font-size:18px;line-height:28px;-webkit-border-radius:4px;border-radius:4px;}.bitcoinate[data-size="30"]:active{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.5);box-shadow:inset 0 0 6px rgba(0,0,0,0.5)}.bitcoinate[data-size="30"] span{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAWCAQAAAC1Bg6SAAAAAnNCSVQICFXsRgQAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAABYUlEQVQoz2NgAAN+Qf4W/gwGBr5o/hZOWQZ0sFHv//9n9xgY7p7+/3+7HwnSGSDoWPf//8PHDEWXrv3/n9PCYM0gDpV9+QYE3777///P369f//z9///R01UHEuZypTJwAKX/4wDPXjhFgqQt/rt/vAsS+PTuf9r//P9t/55DFBzZD7XgzAIQ99VjCO+/yJ9fIP7bh9ikmRgMn70A8V8eQpF+/owhkSGTu2LqFqj1aSjSP389fPrqzfcfELkdRxkcGViRpFHB3787T+hFIEm/f/Hf7L/Df6//LX9eQ5ScOovF5QwMX00h0t++YJNmFLX59g0k8us7A4M2g+PmnSDOi6cMLgzeDIGseQt3Q3S/PcUwa/7Okx8/gzhfvuw4cejc6SvvP8Ddl8Lw8j6OQP/9vx4UhFv/H/5/9PdFIP/n/wu/gHb+uPB/3v/i/5LUSC1g8F3x//9/JxkY/m0EWmKJEAcA/Mp0SJF0rKkAAAAASUVORK5CYII=");width:15px;height:22px;bottom:2px}.bitcoinate[data-size="50"]{padding:0 12px;font-size:32px;line-height:48px;-webkit-border-radius:5px;border-radius:5px;text-shadow:0 -2px 0 rgba(0,0,0,0.5);}.bitcoinate[data-size="50"]:active{-webkit-box-shadow:inset 0 0 10px rgba(0,0,0,0.5);box-shadow:inset 0 0 10px rgba(0,0,0,0.5)}.bitcoinate[data-size="50"] span{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAkCAYAAAB8DZEQAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAVqgAAFaoBKQGivQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAO0SURBVEiJ7ZZPSCNXHMe/bzJNxkkm2ZmMZlnrv2VpUVk2sbgJ9iIUsUJ78bB0QfbUQ/FQWKo3LT0URArdgwfPgULpXvRgQSxtQVLqWsq2AZEG7EK2W7JRkyE1f9DM/Hpwxu2Ok2yypj31Cw++vN+b93nvzfu99xhq620AMdP/AmDV9B8AuGz6VTNWV3ytwOLi4nVFUWIAoGkaZmdnVwFgaWnppiAIVwAgk8kk5+fnXwipqWQyuUKmdnd3v7Pqs9nsY6t+c3Pz40b64l56FE3oP4HwAN53Cuzv7wctr2laAMBdAFy1Wj37jzs7O9cAvAtgH8BjAE8cIVNTUzGngCRJiuUVRVHm5uZiPM8zQRDarHq/398ZDAZjh4eHJ2ZVFsADAD8/1xldUIZhUC6Xy29tbSWnp6fjHMd9gtPt3zqIXZlMJjs8PHwPwNC/BiEiyufz2tjY2EcWgxFR2PRBAHfM8pxyuVxaUZR7ALz/KG8AeNPpfwLA+vr6jxMTE28BKNuXjj86OirYR7a3t/eTU0dEdIOIEk6z0TStoKqqBNjyhDFWrVQqZacOncQY+7VcLr/nFAsEAtL29rZyDvIyEkXxUqFQ+Msp1tfXVwTqHJAvEA/gCoCbvb29Q5Ik+ewNiOgPxthhw5BSqSQC+BCAxyw8AEQiESkej7/DGGP2bxhjnzPGqGGIKIrSzMxMVJZlwe/3ewKBgGdwcLAzHA6/znHcuSXf2NiIj4+Pf1Wzw4ODg6cXyZFUKvVoYGDgMwDzON3mrYcQEem6ricSiYeyLH+KZ7dofYhhGFUiqjQLS6fTTxRFudUQxEpGInIRkUREl4noKhHdJqJvicioBVpeXv6iKUgtEVFU13XHmabT6UctuRkZYw9SqdTXTjGfzye16voVE4mE7hgQRd6eJy4iOpdYdeQHEAEw1N/f/5pTA13X/+QBXANgHfedhmGcm12lUhEA3ALgxrOs9wDwi6LoWlhYCI+MjNxwgnAct8J3dXUNBAKBGABMTk52q6qq2BsSkScSiURVVfWoquqRZdkty7InGo2+Ojo6GpYkyVtrqoIgrGBtbe1+s/u/Cd0nIsaFQqGrddb8IvoSwG3GGOHk5ORhC0euE9E3dJqkLovG8zz/O4Cn9mGUSqWIKIodAHB8fFxwu92/AXBVq9XrPM+/AgDFYnHX6/V+DyBtlh8YY+mG5/r/g7spSEdHR97y7e3tZ97n8xUt39PTk7d/1xQkFAoVLB8MBs9eI21tbRXLd3d3O75S7PobZkIr5VWOUa4AAAAASUVORK5CYII=");width:25px;height:36px;margin:0 8px 0 0;bottom:4px}</style>
+    <link href="./myLocation_files/leaflet.css" rel="stylesheet" type="text/css">
+    <script src="./myLocation_files/leaflet.js.download"></script>
+    <script type="text/javascript" src="./myLocation_files/main.js.download"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./myLocation_files/css2" rel="stylesheet">
+    <link rel="canonical" href="https://mylocation.org/">
+</head>
+<body class="no-adb">
+    <div id="wrapper">
+        <div id="header-wrapper">
+            <div id="header-text">
+                <a href="https://mylocation.org/"><h1>My&nbsp;Location</h1></a>
+                <p>...as seen from the Internet</p>
+            </div>
+        </div>
+
+        <div id="desc">
+            <p>There are many ways to figure out where you are — your IP address, your wireless network connection, which cell tower your device is connected to, built-in GPS hardware. This page aims to show your physical location as it seen by websites over the Internet when you use this particular browsing environment.</p>
+        </div>
+
+        <div class="ha"><div>
+
+<script async="" src="./myLocation_files/f.txt" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8288203502063695" data-ad-slot="3237614882" data-ad-format="horizontal" data-full-width-responsive="true"><iframe id="aswift_0" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./myLocation_files/saved_resource.html"><iframe id="google_ads_frame0" src="./myLocation_files/saved_resource(1).html"></iframe></iframe></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div></div>
+
+        <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist" style="visibility: visible;">
+            
+            <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" id="ui-accordion-accordion-header-0" aria-controls="ui-accordion-accordion-panel-0" aria-selected="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Public IP Address: 72.15.55.6</h3>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-accordion-accordion-panel-0" aria-labelledby="ui-accordion-accordion-header-0" role="tabpanel" style="display: block;" aria-expanded="true" aria-hidden="false">
+	<div class="panel-wrapper">      
+		<div class="info" title="72.15.55.6">
+			<table>
+				<tbody><tr>
+					<td>IP Address</td>
+					<td><b>72.15.55.6</b> (<a href="https://go.expressvpn.com/c/3788175/1462842/16063">change</a>)</td>
+				</tr>
+				<tr>
+					<td>Latitude</td>
+					<td>43.64</td>
+				</tr>
+				<tr>
+					<td>Longitude</td>
+					<td>-79.433</td>
+				</tr>
+				<tr>
+					<td>Country</td>
+					<td>Canada</td>
+				</tr>
+				<tr>
+					<td>Region</td>
+					<td>Ontario</td>
+				</tr>
+				<tr>
+					<td>City</td>
+    				<td>Toronto</td>
+				</tr>
+				<tr>
+					<td>Organization</td>
+					<td>Beanfield Technologies</td>
+				</tr>
+			</tbody></table>
+		</div>
+		<div class="map leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map-0" style="background: none; position: relative;" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="./myLocation_files/1494.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(148px, -122px, 0px); opacity: 1;"><img alt="" role="presentation" src="./myLocation_files/1495.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(148px, 134px, 0px); opacity: 1;"><img alt="" role="presentation" src="./myLocation_files/1494(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-108px, -122px, 0px); opacity: 1;"><img alt="" role="presentation" src="./myLocation_files/1494(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(404px, -122px, 0px); opacity: 1;"><img alt="" role="presentation" src="./myLocation_files/1495(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-108px, 134px, 0px); opacity: 1;"><img alt="" role="presentation" src="./myLocation_files/1495(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(404px, 134px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="./myLocation_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(207px, 150px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="./myLocation_files/marker-icon-2x.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(207px, 150px, 0px); z-index: 150;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(292923px, 382736px, 0px) scale(2048);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="https://mylocation.org/#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="https://mylocation.org/#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a> | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a></div></div></div></div>
+	</div>
+</div>
+
+            
+            <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-accordion-accordion-header-1" aria-controls="geo-div" aria-selected="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Browser Geolocation</h3>
+            <div id="geo-div" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" aria-labelledby="ui-accordion-accordion-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                <div class="panel-wrapper">
+                    <div class="info">
+                        <p>Browser geolocation test detects your location using a built in geolocation feature.</p> <p>Geolocation support is opt-in. You should see a pop-up requesting authorization to share your location. Please select Share/Allow to continue.</p> <p>This may take a few seconds...</p>
+                        <table>
+                            <tbody><tr>
+                                <td>Latitude</td>
+                                <td id="geo-latitude">?</td>
+                            </tr>
+                            <tr>
+                                <td>Longitude</td>
+                                <td id="geo-longitude">?</td>
+                            </tr>
+                        </tbody></table>
+                        <button id="geo-test">Start Test</button>
+                    </div>
+                    <div class="map" id="map-geo"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <div class="ha"><div>
+
+<script async="" src="./myLocation_files/f.txt" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8288203502063695" data-ad-slot="2822025371" data-ad-format="horizontal" data-full-width-responsive="true"><iframe id="aswift_1" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./myLocation_files/saved_resource(2).html"><iframe id="google_ads_frame1" src="./myLocation_files/saved_resource(3).html"></iframe></iframe></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+            </div></div>
+        </div>
+    </div>
+    <div id="flash-div"></div>
+
+<script async="" src="./myLocation_files/f.txt" crossorigin="anonymous"></script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://stats.monohost.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '9']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
+
+</body></html>
